@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>El Profeta</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+      body {
+        font-family: 'Merriweather', serif;
+        background-color: #f3f0e9; /* Un tono de papel periódico viejo */
+        color: #333;
+        margin: 0;
+        padding: 20px;
+        display: flex; /* Para centrar el contenido */
+        justify-content: center; /* Para centrar el contenido */
+        align-items: flex-start; /* Alinear al inicio para scroll */
+        min-height: 100vh; /* Asegurar que el cuerpo ocupe al menos toda la altura de la ventana */
+      }
+
+      .newspaper-container {
+        max-width: 800px;
+        width: 100%; /* Asegurar que ocupe el ancho disponible hasta el max-width */
+        margin: 20px auto; /* Margen superior e inferior, y auto para centrar horizontalmente */
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        padding: 20px; /* Reducido un poco para mejor ajuste en móviles */
+        border-radius: 3px;
+      }
+
+      .header {
+        text-align: center;
+        border-bottom: 5px double #333;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+      }
+
+      .header h1 {
+        font-family: 'MedievalSharp', cursive; /* Fuente gótica para el título */
+        font-size: 4em; /* Reducido para mejor visualización en móviles */
+        margin: 0;
+        line-height: 1;
+        font-weight: bold;
+        color: #000;
+      }
+
+      .sub-header {
+        display: flex;
+        flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+        justify-content: space-between;
+        font-size: 0.8em; /* Reducido para mejor visualización en móviles */
+        color: #555;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+      }
+      .sub-header span {
+        margin-bottom: 5px; /* Espacio entre elementos si se envuelven */
+      }
+
+      .main-content {
+        display: grid;
+        grid-template-columns: 1fr; /* Una sola columna por defecto para móviles */
+        gap: 20px; /* Reducido el gap */
+      }
+
+      /* Media query para pantallas más grandes */
+      @media (min-width: 768px) {
+        .main-content {
+          grid-template-columns: 2fr 1fr; /* Dos columnas en pantallas más grandes */
+        }
+        .header h1 {
+          font-size: 6em; /* Tamaño original para pantallas grandes */
+        }
+        .sub-header {
+          font-size: 0.9em; /* Tamaño original para pantallas grandes */
+        }
+        .newspaper-container {
+          padding: 30px; /* Padding original para pantallas grandes */
+        }
+      }
+
+      .main-article h2 {
+        font-size: 2em; /* Reducido para mejor visualización en móviles */
+        margin-top: 0;
+        line-height: 1.1;
+        color: #000;
+        border-bottom: 2px solid #000;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+      }
+
+      .main-article .article-image {
+        width: 100%;
+        max-width: 100%; /* Asegurar que la imagen no se desborde */
+        height: auto;
+        margin-bottom: 15px;
+        border: 1px solid #aaa;
+        padding: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 3px; /* Bordes redondeados para las imágenes */
+      }
+
+      .main-article p {
+        line-height: 1.6;
+        text-align: justify;
+        font-size: 0.95em; /* Ligeramente más pequeño para mejor lectura en móviles */
+      }
+
+      .sidebar {
+        border-top: 1px solid #ccc; /* Borde superior en móviles */
+        padding-top: 20px; /* Espacio superior en móviles */
+      }
+      @media (min-width: 768px) {
+        .sidebar {
+          border-left: 1px solid #ccc; /* Borde izquierdo en pantallas más grandes */
+          padding-left: 20px; /* Padding izquierdo en pantallas más grandes */
+          border-top: none; /* Quitar borde superior en pantallas grandes */
+          padding-top: 0; /* Quitar padding superior en pantallas grandes */
+        }
+      }
+
+      .sidebar .side-article {
+        margin-bottom: 20px; /* Reducido el margen */
+      }
+
+      .sidebar h3 {
+        font-size: 1.2em; /* Reducido para mejor visualización en móviles */
+        color: #333;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 3px;
+        margin-bottom: 10px;
+      }
+
+      .sidebar p {
+        font-size: 0.85em; /* Reducido para mejor visualización en móviles */
+        line-height: 1.5;
+      }
+      .sidebar .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border: 1px solid #aaa;
+        padding: 3px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 25px; /* Reducido el margen */
+        padding-top: 10px; /* Reducido el padding */
+        border-top: 1px solid #ccc;
+        font-size: 0.75em; /* Reducido para mejor visualización en móviles */
+        color: #777;
+      }
+
+      /* Estilo para simular movimiento en imágenes (si se usaran GIFs) */
+      .moving-image {
+        border: 3px solid #5a4a3a; /* Un borde más "mágico" */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="newspaper-container">
+      <header class="header">
+        <h1>Fundacion Speedwagon</h1>
+      </header>
+
+      <div class="sub-header">
+        <span>Edición Matutina - Precio: 5 Knuts</span>
+        <span>MARTES, 27 DE MAYO DE 2025</span>
+        <span>EL PERIÓDICO LÍDER DEL MUNDO MÁGICO</span>
+      </div>
+
+      <main class="main-content">
+        <section class="main-article">
+          <h2>
+            ¡HARRY POTTER NOMBRADO JEFE DEL DEPARTAMENTO DE APLICACIÓN DE LA LEY
+            MÁGICA!
+          </h2>
+          <img
+            src="https://placehold.co/400x250/E8D8C3/000000?text=Harry+Potter+en+el+Ministerio"
+            alt="Harry Potter en el Ministerio"
+            class="article-image moving-image"
+            onerror="this.onerror=null;this.src='https://placehold.co/400x250/E8D8C3/000000?text=Imagen+no+disponible';"
+          />
+          <p>
+            En un giro sorprendente de los acontecimientos, el renombrado mago
+            Harry Potter ha sido oficialmente nombrado como el nuevo Jefe del
+            Departamento de Aplicación de la Ley Mágica en el Ministerio de
+            Magia. Esta decisión, anunciada esta mañana por el propio Ministro
+            de Magia, Kingsley Shacklebolt, ha sido recibida con una mezcla de
+            entusiasmo y sorpresa en toda la comunidad mágica.
+          </p>
+          <p>
+            Potter, conocido por su papel crucial en la derrota de Lord
+            Voldemort hace ya varias décadas, ha mantenido un perfil
+            relativamente bajo desde sus días de Auror. Sin embargo, fuentes
+            cercanas al Ministerio indican que su vasta experiencia en la lucha
+            contra las artes oscuras y su inquebrantable sentido de la justicia
+            lo convierten en el candidato ideal para liderar este departamento
+            vital.
+          </p>
+          <p>
+            "Estoy honrado por la confianza depositada en mí", declaró Potter en
+            una breve conferencia de prensa. "Espero trabajar incansablemente
+            para garantizar la seguridad y el bienestar de todos los magos y
+            brujas de nuestra comunidad". Se espera que su nombramiento traiga
+            consigo una nueva era de eficiencia y transparencia al departamento.
+          </p>
+          <p>
+            La noticia ha generado un gran revuelo, con lechuzas llegando sin
+            cesar a nuestra redacción con opiniones divididas. Algunos veteranos
+            del Ministerio expresan preocupación por la relativa juventud de
+            Potter para un cargo de tanta responsabilidad, mientras que la
+            generación más joven lo aclama como un símbolo de progreso y cambio
+            muy necesario. Lo que es innegable es que el Departamento de
+            Aplicación de la Ley Mágica, a menudo criticado por su burocracia,
+            se enfrenta a una profunda reestructuración.
+          </p>
+        </section>
+
+        <aside class="sidebar">
+          <div class="side-article">
+            <h3>NUEVAS REGULACIONES PARA EL USO DE GIRATIEMPOS</h3>
+            <img
+              src="https://placehold.co/150x100/E8D8C3/000000?text=Giratiempo"
+              alt="Giratiempo"
+              class="article-image"
+              onerror="this.onerror=null;this.src='https://placehold.co/150x100/E8D8C3/000000?text=Imagen+no+disponible';"
+            />
+            <p>
+              El Ministerio de Magia ha emitido nuevas y estrictas regulaciones
+              sobre la posesión y el uso de Giratiempos, tras los recientes
+              incidentes que pusieron en peligro la integridad del tejido
+              temporal. Solo personal autorizado y bajo supervisión podrá
+              acceder a estos poderosos artefactos. Las penas por incumplimiento
+              se han endurecido considerablemente.
+            </p>
+          </div>
+          <div class="side-article">
+            <h3>EL CALLEJÓN DIAGON SE EXPANDE</h3>
+            <p>
+              Comerciantes del Callejón Diagon anuncian la apertura de una nueva
+              ala comercial, que albergará tiendas especializadas en pociones
+              raras e ingredientes exóticos. Se espera una gran inauguración el
+              próximo mes, con la presencia de Gilderoy Lockhart (si su memoria
+              se lo permite).
+            </p>
+          </div>
+          <div class="side-article">
+            <h3>¿SE HA VISTO UN SNORKACK DE CUERNO ARRUGADO EN SUECIA?</h3>
+            <img
+              src="https://placehold.co/150x100/E8D8C3/000000?text=Criatura+Misteriosa"
+              alt="Criatura Misteriosa"
+              class="article-image"
+              onerror="this.onerror=null;this.src='https://placehold.co/150x100/E8D8C3/000000?text=Imagen+no+disponible';"
+            />
+            <p>
+              Luna Lovegood, editora de "El Quisquilloso", informa de un posible
+              avistamiento de la esquiva criatura en los bosques del norte de
+              Suecia. El Departamento de Regulación y Control de Criaturas
+              Mágicas se muestra escéptico pero ha enviado un equipo de
+              investigación "por si acaso".
+            </p>
+          </div>
+          <div class="side-article">
+            <h3>ANUNCIO CLASIFICADO</h3>
+            <p>
+              Se busca: Gato negro, responde al nombre de "Crookshanks". Visto
+              por última vez persiguiendo gnomos en el jardín de Los Weasley.
+              Recompensa generosa. Contactar a H. Granger.
+            </p>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="footer">
+        <p>&copy; El Profeta - Informando al Mundo Mágico desde 1883</p>
+        <p>
+          Para suscripciones, envíe una lechuza a: Oficina de Suscripciones, El
+          Profeta, Callejón Diagon.
+        </p>
+        <p>
+          Editora Jefe: Rita Skeeter (temporalmente bajo supervisión editorial)
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
